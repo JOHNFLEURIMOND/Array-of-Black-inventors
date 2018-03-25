@@ -77,24 +77,33 @@ const people = ['Alcorn, George Edward, Jr', 'Alexander, Archie', 'Amos, Harold'
   'Bell, Earl S.', 'Benjamin, Miriam', 'Berry, Leonidas', 'Bharucha-Reid, Albert T.', 'Black, Keith', 'Blackwell, David', 'Blair, Henry', 'Boahen, Kwabena', 'Boone, Sarah', 'Bouchet, Edward', 'Bowman, James', 'Brady, St. Elmo', 'Branson, Herman',
   'Bernhard, Sandra', 'Brooks, Charles', 'Brooks, Phil', 'Burr, John Albert', 'Brown, Oscar E.', 'Cardozo, P. William', 'Carver, George Washington', 'Fournier de Pescay, François', 'Sylvain, Yvonne', 'Borgella, Jocelyn', 'Louverture, Toussaint', 'Christophe, Henri', 'Greenaugh, Kevin', 'Hodge, John E.', 'Johnson, Lonnie', 'Ogbu, John Uzo', 'Young, Roger Arliner'
 ];
+// Array.prototype.filter()
+// 1. Filter the list of inventors for those who were born in the 1500's
 
 const blackInventors = inventors.filter(inventor => (inventor.year >= 1800 && inventor.year < 2000));
 
 console.table(blackInventors);
-
+// Array.prototype.map()
+// 2. Give us an array of the inventors' first and last names
+// Array.prototype.sort()
 
 const powerMan = inventors.map(inventor => inventor.first + ' ' + inventor.last);
 console.log(powerMan);
 
 
+// 3. Sort the inventors by birthdate, oldest to youngest
+// Array.prototype.reduce()
+
 const komande = inventors.sort((firstPerson, secondPerson) => firstPerson.year > secondPerson.year ? 1 : -1);
 console.table(komande)
 
+// 4. How many years did all the inventors live?
 
 const wakanada = inventors.reduce((total, inventor) => {
   return total + (inventor.passed - inventor.year);
 }, 0);
 console.log(wakanada);
+// 5. Sort the inventors by years lived
 
 const granmoun = inventors.sort(function(a, b) {
   const lastInventor = a.passed - a.year;
@@ -103,7 +112,8 @@ const granmoun = inventors.sort(function(a, b) {
 });
 console.table(granmoun);
 
-
+// 7. sort Exercise
+// Sort the people alphabetically by last name
 const buyBlack = people.sort((lastOne, nextOne) => {
   const [aLast, aFirst] = lastOne.split(', ');
   const [bLast, bFirst] = nextOne.split(', ');
